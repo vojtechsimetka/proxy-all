@@ -1,0 +1,53 @@
+{
+  "name": "@vojtechsimetka/proxy-all",
+  "version": "0.0.1",
+  "description": "This proxies everything",
+  "keywords": [
+    "proxy",
+    "node"
+  ],
+  "bin": {
+    "bee-gateway-proxy": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "rimraf ./build && tsc && chmod +x dist/index.js",
+    "start": "nodemon --config nodemon.json src/index.ts",
+    "start:debug": "nodemon --config nodemon.json --inspect-brk src/index.ts",
+    "lint": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\"",
+    "lint:check": "eslint \"src/**/*.ts\" && prettier --check \"src/**/*.ts\"",
+    "depcheck": "depcheck .",
+    "check:types": "tsc --project tsconfig.test.json"
+  },
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.4.6",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.1",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "http-proxy-middleware": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  }
+}
